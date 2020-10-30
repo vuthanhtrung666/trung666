@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/Thongtin"
+        android:title="Thông tin cá nhân"/>
+    <item android:id="@+id/QuetQR"
+        android:title="Quét mã QR"/>
+    <item android:id="@+id/Thoat"
+        android:title="Thoát"/>
+</menu>

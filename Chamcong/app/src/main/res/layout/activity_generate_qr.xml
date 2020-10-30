@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Generate_qr">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imgQR"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="100dp"
+            android:scaleType="fitCenter" />
+
+        <EditText
+            android:id="@+id/edtTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/imgQR"
+            android:layout_marginTop="30dp"
+            android:ems="10"
+            android:inputType="number"
+            android:text="0"
+            android:textAlignment="center"
+            android:textSize="20dp" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/edtTime"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:text="Tạo mã QR" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/button"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:text="Kết thúc" />
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

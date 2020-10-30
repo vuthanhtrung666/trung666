@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/Themnv"
+        android:title="Thêm nhân viên"/>
+    <item android:id="@+id/Baocao"
+        android:title="Báo cáo"/>
+    <item android:id="@+id/TaoQR"
+        android:title="Tạo mã QR"/>
+    <item android:id="@+id/QuetQR"
+        android:title="Quét mã QR"/>
+    <item android:id="@+id/Thoat"
+        android:title="Thoát"/>
+</menu>
