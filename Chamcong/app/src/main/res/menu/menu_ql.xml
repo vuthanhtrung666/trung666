@@ -4,8 +4,6 @@
         android:title="Thêm nhân viên"/>
     <item android:id="@+id/Baocao"
         android:title="Báo cáo"/>
-    <item android:id="@+id/TaoQR"
-        android:title="Tạo mã QR"/>
     <item android:id="@+id/QuetQR"
         android:title="Quét mã QR"/>
     <item android:id="@+id/Thoat"

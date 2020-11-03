@@ -90,7 +90,12 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),"Xin nhập đầy đủ thông tin!",
                             Toast.LENGTH_LONG).show();
                 }else {
-                    login(user,pass);
+                    if(user.equals("admin") && pass.equals("123")){
+                        Intent intent = new Intent(MainActivity.this,Generate_qr.class);
+                        startActivity(intent);
+                    } else {
+                        login(user,pass);
+                    }
                 }
             }
         });

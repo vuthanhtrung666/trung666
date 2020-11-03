@@ -35,7 +35,7 @@ public class Generate_qr extends AppCompatActivity {
     ImageView maQR;
     TextView edtTime;
     Button btn;
-    Button btnend;
+    Button btnend, btnthoat;
     String QR;
     int hour;
     CountDownTimer Timer;
@@ -47,7 +47,12 @@ public class Generate_qr extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_generate_qr);
         AddControls();
-
+        btnthoat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
 
     private void AddControls() {
@@ -56,7 +61,7 @@ public class Generate_qr extends AppCompatActivity {
         btnend = findViewById(R.id.button2);
         edtTime = (EditText) findViewById(R.id.edtTime);
         dataHandler = new DataHandler(Generate_qr.this);
-
+        btnthoat = findViewById(R.id.button3);
     }
 
     private void updateQR(final String sBuoi, final String QR){
@@ -167,7 +172,6 @@ public class Generate_qr extends AppCompatActivity {
                 Timer.cancel();
                 edtTime.setText("0");
                 maQR.setImageDrawable(null);
-                finish();
             }
         });
     }

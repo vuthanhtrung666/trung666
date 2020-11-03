@@ -47,5 +47,13 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
             android:text="Kết thúc" />
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/button2"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:text="Thoát" />
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -138,10 +138,11 @@ public class Insert_Update extends AppCompatActivity {
                         if(response.equals("update success")){
                             Toast.makeText(Insert_Update.this,"Cập nhập dữ liệu thành công!",
                                     Toast.LENGTH_SHORT).show();
-
+                            finish();
                         }else {
                             Toast.makeText(Insert_Update.this,"Lỗi!",
                                     Toast.LENGTH_SHORT).show();
+                            finish();
                         }
                     }
                 },
@@ -177,9 +178,11 @@ public class Insert_Update extends AppCompatActivity {
                             Toast.makeText(Insert_Update.this,"Thêm dữ liệu thành công!",
                                     Toast.LENGTH_SHORT).show();
                             sendMail(username,email);
+                            finish();
                         }else {
                             Toast.makeText(Insert_Update.this,"Lỗi!",
                                     Toast.LENGTH_SHORT).show();
+                            finish();
                         }
                     }
                 },
@@ -295,7 +298,7 @@ public class Insert_Update extends AppCompatActivity {
                         update(edtMa.getText().toString(),edtTen.getText().toString(),
                                 edtEmail.getText().toString(), dschucvu.get(posi),
                                 edtUser.getText().toString(),edtPass.getText().toString());
-                        finish();
+
                     }
                 } else {
                     //databaseHandler.insertNV(edtMa.getText().toString(),edtTen.getText().toString(),
@@ -308,7 +311,7 @@ public class Insert_Update extends AppCompatActivity {
                         insert(edtMa.getText().toString(),edtTen.getText().toString(),
                                 edtEmail.getText().toString(), dschucvu.get(posi),
                                 edtUser.getText().toString(),edtPass.getText().toString());
-                        finish();
+
                     }
                 }
 

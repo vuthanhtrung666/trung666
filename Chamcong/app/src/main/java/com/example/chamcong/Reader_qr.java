@@ -40,7 +40,8 @@ public class Reader_qr extends AppCompatActivity {
     TextView tvketqua;
     Button btnScan,btnThoat;
     String URL_GETQR="https://chamcong666.000webhostapp.com/getQR.php";
-    String URL_CHAMCONG="https://chamcong666.000webhostapp.com/chamcong.php";
+    String URL_CHAMCONGSANG="https://chamcong666.000webhostapp.com/chamcongsang.php";
+    String URL_CHAMCONGCHIEU="https://chamcong666.000webhostapp.com/chamcongchieu.php";
     int hour;
     String manv;
     String date;
@@ -122,18 +123,18 @@ public class Reader_qr extends AppCompatActivity {
         get.add(stringRequest);
     }
 
-    private void Chamcong(final String iManv, final String sNgay, final String sSang, final String sChieu ){
+    private void Chamcongsang(final String iManv, final String sNgay, final String sSang ){
         RequestQueue chamcong = Volley.newRequestQueue(this);
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_CHAMCONG,
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_CHAMCONGSANG,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         if(response.equals("success")){
                             Toast.makeText(Reader_qr.this,"Chấm công thành công!",
-                                    Toast.LENGTH_SHORT).show();
+                                    Toast.LENGTH_LONG).show();
                         }else {
                             Toast.makeText(Reader_qr.this,"Lỗi!",
-                                    Toast.LENGTH_SHORT).show();
+                                    Toast.LENGTH_LONG).show();
                         }
                     }
                 },
@@ -149,6 +150,38 @@ public class Reader_qr extends AppCompatActivity {
                 params.put("iManv", iManv);
                 params.put("sNgay",sNgay);
                 params.put("sSang",sSang);
+                return params;
+            }
+        };
+        chamcong.add(stringRequest);
+    }
+
+    private void Chamcongchieu(final String iManv, final String sNgay, final String sChieu ){
+        RequestQueue chamcong = Volley.newRequestQueue(this);
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_CHAMCONGCHIEU,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        if(response.equals("success")){
+                            Toast.makeText(Reader_qr.this,"Chấm công thành công!",
+                                    Toast.LENGTH_LONG).show();
+                        }else {
+                            Toast.makeText(Reader_qr.this,"Lỗi!",
+                                    Toast.LENGTH_LONG).show();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> params = new HashMap<>();
+                params.put("iManv", iManv);
+                params.put("sNgay",sNgay);
                 params.put("sChieu",sChieu);
                 return params;
             }
@@ -169,17 +202,19 @@ public class Reader_qr extends AppCompatActivity {
 
     private void kiemtratg(int hour,String ngay,String id) {
         if (hour >= 0 && hour <= 12) {
+            Log.e("maqr","cham cong sang");
             if(hour<=8){
-                Chamcong(id,ngay,"du","");
+                Chamcongsang(id,ngay,"du");
             } else {
-                Chamcong(id,ngay,"muon","");
+                Chamcongsang(id,ngay,"muon");
             }
         }
         if (hour > 12 && hour <= 23) {
+            Log.e("maqr","cham cong chieu");
             if(hour>=17){
-                Chamcong(id,ngay,"","du");
+                Chamcongchieu(id,ngay,"du");
             } else {
-                Chamcong(id,ngay,"","som");
+                Chamcongchieu(id,ngay,"som");
             }
         }
     }

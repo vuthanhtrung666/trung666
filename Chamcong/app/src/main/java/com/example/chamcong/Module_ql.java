@@ -54,7 +54,7 @@ public class Module_ql extends AppCompatActivity {
     }
 
     private void AddControls() {
-        databaseHandler = new DataHandler(Module_ql.this);
+        //databaseHandler = new DataHandler(Module_ql.this);
         dsnv = new ArrayList<>();
         Intent intent = getIntent();
         manv = intent.getStringExtra("manv");
@@ -83,10 +83,12 @@ public class Module_ql extends AppCompatActivity {
                                         object.getString("sEmail"),
                                         object.getString("sChucvu")
                                 ));
+
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
                         }
+                        Log.e("AAA",dsnv.toString());
                         la.notifyDataSetChanged();
                     }
                 },
@@ -151,10 +153,6 @@ public class Module_ql extends AppCompatActivity {
                 Baocao();
                 return true;
             }
-            case R.id.TaoQR:{
-                TaoQR();
-                return true;
-            }
             case R.id.QuetQR:{
                 QuetQR();
                 return true;
@@ -181,11 +179,6 @@ public class Module_ql extends AppCompatActivity {
     private void QuetQR() {
         Intent intent = new Intent(Module_ql.this,Reader_qr.class);
         intent.putExtra("manv",manv);
-        startActivity(intent);
-    }
-
-    private void TaoQR() {
-        Intent intent = new Intent(Module_ql.this,Generate_qr.class);
         startActivity(intent);
     }
 
@@ -246,8 +239,10 @@ public class Module_ql extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == RESULT_NHANVIEN_ACTIVITY) {
             int i = 0;
-            for(int n=0;n<6;n++){
-                if(i==5){
+            for(int n=0;n<11;n++){
+                if(i==10){
+                    Log.e("AAA","ket qua tra ve");
+                    dsnv = new ArrayList<>();
                     load(URL_DS);
                     la = new list_adapter(dsnv);
                     lst.setAdapter(la);
@@ -259,7 +254,7 @@ public class Module_ql extends AppCompatActivity {
                 //load(URL_DS);
                 //la = new list_adapter(dsnv);
                 //lst.setAdapter(la);
-                Log.e("AAA","ket qua tra ve");
+
                 // DetailActivity không thành công, không có data trả về.
             }
         }
