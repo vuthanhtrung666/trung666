@@ -96,9 +96,7 @@ public class Module_nv extends AppCompatActivity {
         //Toast.makeText(Module_nv.this,s,Toast.LENGTH_LONG).show();
         //nv = dataHandler.getNVByID(s);
         GetNVbyID(s);
-        Toast.makeText(Module_nv.this,"Tên nhân viên: " + sTen  + "\nĐịa chỉ Email: " + sEmail
-                + "\nChức vụ: " + sChucvu + "\nUsername: " + sUsername  +
-                "\nPassword: " + sPassword,Toast.LENGTH_LONG).show();
+
     }
 
     private void GetNVbyID(final String id){
@@ -122,6 +120,9 @@ public class Module_nv extends AppCompatActivity {
                             sChucvu = nv.getsChucvu();
                             sUsername = nv.getsUsername();
                             sPassword = nv.getsPassname();
+                            Toast.makeText(Module_nv.this,"Tên nhân viên: " + sTen  + "\nĐịa chỉ Email: " + sEmail
+                                    + "\nChức vụ: " + sChucvu + "\nUsername: " + sUsername  +
+                                    "\nPassword: " + sPassword,Toast.LENGTH_LONG).show();
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }

@@ -62,8 +62,6 @@
             android:id="@+id/tvQmk"
             android:text="Quên mật khẩu?"
             android:textAlignment="center"/>
-
-
     </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

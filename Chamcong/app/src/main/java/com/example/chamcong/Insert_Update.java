@@ -320,8 +320,7 @@ public class Insert_Update extends AppCompatActivity {
         btnThoat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Insert_Update.this,Module_ql.class);
-                startActivity(intent);
+                finish();
             }
         });
     }
