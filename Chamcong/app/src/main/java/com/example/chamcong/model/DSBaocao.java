@@ -4,21 +4,17 @@ public class DSBaocao {
     private int iManv;
     private String sTen;
     private String sEmail;
-    private int sSang;
-    private int sChieu;
+    private int sBuoi;
 
-    public DSBaocao(int iManv, String sEmail, int sSang, int sChieu) {
-        this.iManv = iManv;
-        this.sEmail = sEmail;
-        this.sSang = sSang;
-        this.sChieu = sChieu;
+
+    public DSBaocao() {
     }
 
-    public DSBaocao(int iManv, String sTen, String sEmail, int sChieu) {
+    public DSBaocao(int iManv, String sTen, String sEmail, int sBuoi) {
         this.iManv = iManv;
         this.sTen = sTen;
         this.sEmail = sEmail;
-        this.sChieu = sChieu;
+        this.sBuoi = sBuoi;
     }
 
     public int getiManv() {
@@ -45,19 +41,11 @@ public class DSBaocao {
         this.sEmail = sEmail;
     }
 
-    public int getsSang() {
-        return sSang;
+    public int getsBuoi() {
+        return sBuoi;
     }
 
-    public void setsSang(int sSang) {
-        this.sSang = sSang;
-    }
-
-    public int getsChieu() {
-        return sChieu;
-    }
-
-    public void setsChieu(int sChieu) {
-        this.sChieu = sChieu;
+    public void setsBuoi(int sBuoi) {
+        this.sBuoi = sBuoi;
     }
 }

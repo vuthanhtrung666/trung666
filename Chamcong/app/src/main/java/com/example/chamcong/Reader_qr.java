@@ -68,7 +68,9 @@ public class Reader_qr extends AppCompatActivity {
                 qrScan.setCameraId(0);
                 qrScan.setBeepEnabled(true);
                 qrScan.setOrientationLocked(true);
+                qrScan.setBarcodeImageEnabled(true);
                 qrScan.initiateScan();
+
             }
         });
         btnThoat.setOnClickListener(new View.OnClickListener() {

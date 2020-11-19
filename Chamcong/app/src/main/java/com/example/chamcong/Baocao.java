@@ -70,8 +70,8 @@ public class Baocao extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),"Xin nhập ngày cần tìm",Toast.LENGTH_SHORT).show();
                 }else {
                     load_date(edtDate.getText().toString());
-                    la = new list_adapter_bc(dsnv);
-                    lst.setAdapter(la);
+                    //la = new list_adapter_bc(dsnv);
+                    //lst.setAdapter(la);
                 }
 
                 //la.notifyDataSetChanged();
@@ -90,8 +90,8 @@ public class Baocao extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),"Xin nhập tháng cần tìm",Toast.LENGTH_SHORT).show();
                 }else {
                     load_month_S(edtDate.getText().toString());
-                    lasang = new list_adapter_bc_sang(dsnvbc);
-                    lst.setAdapter(lasang);
+                    //lasang = new list_adapter_bc_sang(dsnvbc);
+                    //lst.setAdapter(lasang);
                     layout.setVisibility(View.GONE);
                 }
             }
@@ -103,8 +103,8 @@ public class Baocao extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),"Xin nhập tháng cần tìm",Toast.LENGTH_SHORT).show();
                 }else {
                     load_month_C(edtDate.getText().toString());
-                    lachieu = new list_adapter_bc_chieu(dsnvbc);
-                    lst.setAdapter(lachieu);
+                    //lachieu = new list_adapter_bc_chieu(dsnvbc);
+                    //lst.setAdapter(lachieu);
                     layout.setVisibility(View.GONE);
                 }
             }
@@ -119,25 +119,34 @@ public class Baocao extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         try {
-                            JSONObject jobj = new JSONObject(response);
-                            JSONArray response1 = jobj.getJSONArray("Nhanvien");
-                        for(int i=0;i<response1.length();i++){
+                            if(response.equals("empty")){
+                                Toast.makeText(getApplicationContext(),"danh sách rỗng",
+                                        Toast.LENGTH_LONG).show();
+                            } else {
+                                JSONObject jobj = new JSONObject(response);
+                                JSONArray response1 = jobj.getJSONArray("Nhanvien");
+                                Log.e("anyText", String.valueOf(response1));
+                                for(int i=0;i<response1.length();i++){
 
-                                JSONObject object = response1.getJSONObject(i);
-                            Log.e("anyText", String.valueOf(response1));
-                                dsnv.add(new Nhanvien(
-                                        object.getInt("iManv"),
-                                        object.getString("sTen"),
-                                        object.getString("sEmail"),
-                                        object.getString("sSang"),
-                                        object.getString("sChieu")
-                                ));
-                                Log.e("AAA","them dsnv");
+                                    JSONObject object = response1.getJSONObject(i);
+
+                                    dsnv.add(new Nhanvien(
+                                            object.getInt("iManv"),
+                                            object.getString("sTen"),
+                                            object.getString("sEmail"),
+                                            object.getString("sSang"),
+                                            object.getString("sChieu")
+                                    ));
+                                    Log.e("AAA","them dsnv");
+                                }
                             }
+
                         } catch (JSONException e) {
                                 e.printStackTrace();
                             }
-                        la.notifyDataSetChanged();
+                        //la.notifyDataSetChanged();
+                        la = new list_adapter_bc(dsnv);
+                        lst.setAdapter(la);
                     }
                 },
                 new Response.ErrorListener() {
@@ -157,32 +166,39 @@ public class Baocao extends AppCompatActivity {
     }
 
     private void load_month_S(final String date){
-
-        dsnv.clear();
+        dsnvbc.clear();
         RequestQueue load_date = Volley.newRequestQueue(this);
         StringRequest jsonArrayRequest = new StringRequest(Request.Method.POST, URL_BYMONTHS,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         try {
-                            JSONObject jobj = new JSONObject(response);
-                            JSONArray response1 = jobj.getJSONArray("Nhanvien");
-                            for(int i=0;i<response1.length();i++){
-
-                                JSONObject object = response1.getJSONObject(i);
+                            if(response.equals("empty")){
+                                Toast.makeText(getApplicationContext(),"danh sách rỗng",
+                                        Toast.LENGTH_LONG).show();
+                            } else {
+                                JSONObject jobj = new JSONObject(response);
+                                JSONArray response1 = jobj.getJSONArray("Nhanvien");
                                 Log.e("anyText", String.valueOf(response1));
-                                dsnvbc.add(new DSBaocao(
-                                        object.getInt("iManv"),
-                                        object.getString("sTen"),
-                                        object.getString("sEmail"),
-                                        object.getInt("sSang")
-                                ));
-                                Log.e("AAA","them dsnv");
+                                for(int i=0;i<response1.length();i++){
+
+                                    JSONObject object = response1.getJSONObject(i);
+
+                                    dsnvbc.add(new DSBaocao(
+                                            object.getInt("iManv"),
+                                            object.getString("sTen"),
+                                            object.getString("sEmail"),
+                                            object.getInt("sSang")
+                                    ));
+                                    Log.e("AAA","them dsnv sang");
+                                }
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-                        lasang.notifyDataSetChanged();
+                        //lasang.notifyDataSetChanged();
+                        lasang = new list_adapter_bc_sang(dsnvbc);
+                        lst.setAdapter(lasang);
                     }
                 },
                 new Response.ErrorListener() {
@@ -202,32 +218,40 @@ public class Baocao extends AppCompatActivity {
     }
 
     private void load_month_C(final String date){
-
-        dsnv.clear();
+        dsnvbc.clear();
         RequestQueue load_date = Volley.newRequestQueue(this);
-        StringRequest jsonArrayRequest = new StringRequest(Request.Method.POST, URL_BYMONTHS,
+        StringRequest jsonArrayRequest = new StringRequest(Request.Method.POST, URL_BYMONTHC,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         try {
-                            JSONObject jobj = new JSONObject(response);
-                            JSONArray response1 = jobj.getJSONArray("Nhanvien");
-                            for(int i=0;i<response1.length();i++){
-
-                                JSONObject object = response1.getJSONObject(i);
+                            if(response.equals("empty")){
+                                Toast.makeText(getApplicationContext(),"danh sách rỗng",
+                                        Toast.LENGTH_LONG).show();
+                            } else {
+                                JSONObject jobj = new JSONObject(response);
+                                JSONArray response1 = jobj.getJSONArray("Nhanvien");
                                 Log.e("anyText", String.valueOf(response1));
-                                dsnvbc.add(new DSBaocao(
-                                        object.getInt("iManv"),
-                                        object.getString("sTen"),
-                                        object.getString("sEmail"),
-                                        object.getInt("sChieu")
-                                ));
-                                Log.e("AAA","them dsnv");
+                                for(int i=0;i<response1.length();i++){
+
+                                    JSONObject object = response1.getJSONObject(i);
+
+                                    dsnvbc.add(new DSBaocao(
+                                            object.getInt("iManv"),
+                                            object.getString("sTen"),
+                                            object.getString("sEmail"),
+                                            object.getInt("sChieu")
+                                    ));
+                                    Log.e("AAA","them dsnv chieu");
+                                }
                             }
+
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-                        lachieu.notifyDataSetChanged();
+                        //lachieu.notifyDataSetChanged();
+                        lachieu = new list_adapter_bc_chieu(dsnvbc);
+                        lst.setAdapter(lachieu);
                     }
                 },
                 new Response.ErrorListener() {
@@ -245,6 +269,7 @@ public class Baocao extends AppCompatActivity {
         };
         load_date.add(jsonArrayRequest);
     }
+
     private void AddControls() {
         layout = findViewById(R.id.layoutbtn);
         dsnv = new ArrayList<>();

@@ -43,7 +43,7 @@ public class list_adapter_bc_sang extends BaseAdapter {
         ((TextView) viewNV.findViewById(R.id.tvManv)).setText(String.format("%s", nv.getiManv()));
         ((TextView) viewNV.findViewById(R.id.tvTen)).setText(String.format("Tên:%s", nv.getsTen()));
         ((TextView) viewNV.findViewById(R.id.tvEmail)).setText(String.format("Email:%s",nv.getsEmail()));
-        ((TextView) viewNV.findViewById(R.id.tvSang)).setText(String.format("Sáng:%s",nv.getsSang()));
+        ((TextView) viewNV.findViewById(R.id.tvSang)).setText(String.format("Sáng:%s",nv.getsBuoi()));
         return viewNV;
     }
 }

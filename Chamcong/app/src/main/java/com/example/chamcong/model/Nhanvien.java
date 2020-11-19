@@ -10,6 +10,7 @@ public class Nhanvien implements Serializable {
     private String sUsername;
     private String sPassname;
     private String sSang;
+    private String sChieu;
 
     public String getsSang() {
         return sSang;
@@ -27,10 +28,10 @@ public class Nhanvien implements Serializable {
         this.sChieu = sChieu;
     }
 
-    private String sChieu;
-
     public Nhanvien() {
     }
+
+
 
     public Nhanvien(int iManv, String sTen, String sEmail, String sSang, String sChieu) {
         this.iManv = iManv;
